@@ -14,6 +14,12 @@ public class TransactionServices(ITransactionRepository transactionRepository, I
 {
     public async Task<Response<CreateTransactionResponse>> Create(CreateTransactionRequest request)
     {
+        if (!request.ValidationResult().IsValid)
+        {
+            return 
+                new Response<CreateTransactionResponse>(null, false, request.ValidationResult().Errors.Select(x => x.ErrorMessage));
+        }
+
         Transaction transaction = new(request.Amount, request.Type);
 
         transactionRepository.Add(transaction);

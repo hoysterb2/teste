@@ -10,7 +10,7 @@ public class TransactionController(ITransactionServices transactionServices) : C
 {
     [HttpPost]
     public async Task<IActionResult> CreateTransaction(CreateTransactionRequest request)
-    {
+    { 
         var response = await transactionServices.Create(request);
 
         return Ok(response);
@@ -22,16 +22,5 @@ public class TransactionController(ITransactionServices transactionServices) : C
         var response = await transactionServices.GetByDate(date);
 
         return Ok(response);
-    }
-}
-
-[ApiController]
-[Route("api/v1/[controller]")]
-public class ReportController(IReportServices reportServices) : ControllerBase
-{
-    [HttpGet("get-by-date")]
-    public async Task<IActionResult> GetByDate([FromQuery] DateTime date)
-    {
-        return Ok(await reportServices.GetByDate(date));
-    }
+    } 
 }
