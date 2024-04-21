@@ -23,3 +23,4 @@
 - Na minha aplicação as interfaces de repositório e entidade de domínio ficam na camada de Domain
 - a parte de acesso ao banco de dados fica na camada de infraestrutura (que são as implementações dos repositórios) e também meus mapeamentos do DB
 - na parte dos services a gente tem o flow das regras de negócios, seja criação.. eventos.. buscar, nessa camada poderíamos ter usado CQRS, mas a complexidade não necessitava.
+- Criei na camada de API um middleware para tratativa de erros internos
